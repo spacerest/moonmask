@@ -1,6 +1,7 @@
 from moonmask.custom_image import CustomImage 
 from moonmask.res.constants import *
 from datetime import datetime, timezone, timedelta
+import urllib.request, json
 
 class MoonImage(CustomImage):
     def __init__(self, size, kw):
@@ -39,7 +40,19 @@ class MoonImage(CustomImage):
             self.url = self.get_moon_url(date)
 
         self.set_image(url=self.url, filename=filename)
+        self.get_moon_info(date)
         return
+    
+    def get_moon_info(self, date):
+        self.json_url = "https://svs.gsfc.nasa.gov/vis/a000000/a00{year_id_modulo}/a00{year_id}/mooninfo_{year}.json".format(
+            year_id_modulo = str(self.nasa_id - self.nasa_id % 100),
+            year_id = str(self.nasa_id),
+            frame_id = str(self.frame_id),
+            year = self.datetime.year
+        )
+        response = urllib.request.urlopen(self.json_url) 
+        self.moon_info = json.loads(response.read())[int(self.frame_id)]
+        #print(self.moon_info)
 
     def get_nasa_frame_id(self, date):
         #code logic courtesy of Ernie Wright

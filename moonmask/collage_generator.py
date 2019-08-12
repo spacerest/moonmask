@@ -42,7 +42,6 @@ class CollageGenerator():
         """
         self.image_store[key] = MoonImage(self.size, key)
         self.image_store[key].set_moon_image(**kwargs)
-        self.image_store[key]
         
         return
 
