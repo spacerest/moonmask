@@ -21,7 +21,7 @@ setup(
         'opencv-python==4.1.0.25',
         'packaging==19.0',
         'pluggy==0.12.0',
-        'py==1.8.0',
+        'py==1.10.0',
         'pyparsing==2.4.2',
         'pytest==5.0.1',
         'six==1.12.0',
