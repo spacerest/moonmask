@@ -17,7 +17,7 @@ setup(
         'attrs==19.1.0',
         'importlib-metadata==0.18',
         'more-itertools==7.2.0',
-        'numpy==1.16.4',
+        'numpy==1.22.0',
         'opencv-python==4.1.0.25',
         'packaging==19.0',
         'pluggy==0.12.0',
